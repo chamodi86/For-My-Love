@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For My Baby 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            background: #fff0f5;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+            height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .card {
+            background: #ffe6f0;
+            border-radius: 25px;
+            padding: 30px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #ff4d88;
+        }
+
+        p {
+            font-size: 22px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button {
+            background: #ff66a3;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #ff3385;
+        }
+
+        #response {
+            font-size: 20px;
+            margin-top: 15px;
+            color: #ff4d88;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active">
+    <div class="card">
+        <h1>Hey baby… 🥺🩷</h1>
+        <img src="page1.gif">
+        <p>Can you listen to me for a tiny little moment?</p>
+        <button onclick="nextPage()">Next ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+    <div class="card">
+        <p>I know I made a teeny tiny mistake…🩷<br>
+        I didn’t mean to hurt you 😢</p>
+        <img src="page2.gif">
+        <button onclick="prevPage()">⬅ Back</button>
+        <button onclick="nextPage()">Next ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+    <div class="card">
+        <p>I’m really really really sorry 🥺💔<br>
+        Please forgive your silly baby girl 💕</p>
+        <img src="page3.gif">
+        <button onclick="prevPage()">⬅ Back</button>
+        <button onclick="nextPage()">Next ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+    <div class="card">
+        <p>These flowers are just for you 🌸💐<br>
+        Each one is filled with my love 🥰</p>
+        <img src="page4.gif">
+        <button onclick="prevPage()">⬅ Back</button>
+        <button onclick="nextPage()">Next ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+    <div class="card">
+        <p>Put this little plaster on your hurting heart ❤️‍🩹<br>
+        And let me make it all better 💗</p>
+        <img src="page5.png">
+        <button onclick="prevPage()">⬅ Back</button>
+        <button onclick="nextPage()">Next ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+    <div class="card">
+        <h1>Will you forgive me..? 🥺💗</h1>
+        <p>Please don’t stay mad at your baby girl…</p>
+        <img src="page6.gif">
+
+        <!-- YES button jumps to page 7 -->
+        <button onclick="yes()">YES 💖</button>
+        <button onclick="no()">NO 💔</button>
+
+        <p id="response"></p>
+        <button onclick="prevPage()">⬅ Back</button>
+    </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+    <div class="card">
+        <p>I love you so much 💕</p>
+        <img src="page7.gif">
+        <button onclick="prevPage()">⬅ Back</button>
+    </div>
+</div>
+
+<script>
+    let currentPage = 0;
+    const pages = document.querySelectorAll(".page");
+
+    function nextPage() {
+        if (currentPage < pages.length - 1) {
+            pages[currentPage].classList.remove("active");
+            currentPage++;
+            pages[currentPage].classList.add("active");
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 0) {
+            pages[currentPage].classList.remove("active");
+            currentPage--;
+            pages[currentPage].classList.add("active");
+        }
+    }
+
+    function yes() {
+        document.getElementById("response").innerHTML =
+            "Yayyy 🥹💖 Thank you for forgiving me!";
+        setTimeout(() => {
+            pages[currentPage].classList.remove("active");
+            currentPage = 6; // page 7 index
+            pages[currentPage].classList.add("active");
+        }, 1200);
+    }
+
+    function no() {
+        document.getElementById("response").innerHTML =
+            "Aww 🥺💔 You gonna hurt your baby girl’s tiny heart… please say yes 💕";
+    }
+</script>
+
+</body>
+</html>
